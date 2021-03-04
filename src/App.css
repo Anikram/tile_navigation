@@ -1,38 +1,132 @@
-.App {
-  text-align: center;
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1.5s linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1.5s, opacity 1s linear;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.god {
+
 }
 
-.App-link {
-  color: #61dafb;
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.overlayDiv {
+    /*opacity: 0.5;*/
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.overlayButton {
+    text-align: center;
+    font-weight: bold;
+    line-height: 4rem;
+    background: black;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+
+}
+
+
+.contentContainer {
+    display: block;
+    position: relative;
+    margin: 2rem;
+    padding: 5rem 15rem 5rem 10rem;
+    text-align: left;
+}
+
+.contentContainer h1 {
+    font-size: 4rem;
+}
+
+.contentContainer p {
+    font-size: 2rem;
+}
+
+.actions {
+    float: right;
+    margin: 0 0 0 auto;
+    width: 50%;
+    position: relative;
+}
+
+.action-button {
+    background: black;
+    color: white;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    margin: 1rem 0.5rem;
+    font-size: 1.5rem;
+
+}
+
+.action-button:active {
+    border: none;
+}
+
+.main {
+    text-align: center;
+    background: bisque;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
+}
+
+.burger {
+    font-size: 2rem;
+    position: absolute;
+    color: gainsboro;
+    top: 2rem;
+    left: 2rem;
+    min-width: 5rem;
+    max-width: 5rem;
+    min-height: 5rem;
+    max-height: 5rem;
+    background-color: black;
+    /*transition: 0.5s;*/
+    border-radius: 1rem;
+    text-align: center;
+    line-height: 5rem;
+}
+
+.sect {
+    display: grid;
+    grid-template-rows: 1fr 10rem;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
