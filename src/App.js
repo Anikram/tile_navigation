@@ -102,43 +102,44 @@ class MyComponent extends Component {
                left: this.state.tiles[this.state.currentTile].x * this.state.display.width,
              }}>
           {/*<div className={'burger'} onClick={this.toggleOverlay}></div>*/}
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => {this.hopToNewTileAndToggle('00')} }
                style={{background: "yellow", opacity: this.tileIsActive('00') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => {this.hopToNewTileAndToggle('00')} }>00</div>
+            <div className={'overlayButton'} >00</div>
           </div>
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('10')}
                style={{background: "orange", opacity: this.tileIsActive('10') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('10')}>10</div>
+            <div className={'overlayButton'}>10</div>
           </div>
           <div className={'overlayDiv'}
+               // onClick={() => this.hopToNewTileAndToggle('20')}
                style={{background: "lightgrey", opacity: this.tileIsActive('20') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('20')}>20</div>
+            <div className={'overlayButton'}>20</div>
           </div>
 
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('01')}
                style={{background: "crimson", opacity: this.tileIsActive('01') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('01')}>01</div>
+            <div className={'overlayButton'}>01</div>
           </div>
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('11')}
                style={{background: "lightblue", opacity: this.tileIsActive('11') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('11')}>11</div>
+            <div className={'overlayButton'}>11</div>
           </div>
-          <div className={'overlayDiv'}
-               style={{background: "purple", opacity: this.tileIsActive('22') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('22')}>22</div>
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('21')}
+               style={{background: "purple", opacity: this.tileIsActive('21') ? 1 : OPACITY_LEVEL}}>
+            <div className={'overlayButton'}>21</div>
           </div>
 
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('02')}
                style={{background: "brown", opacity: this.tileIsActive('02') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('02')}>02</div>
+            <div className={'overlayButton'}>02</div>
           </div>
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('12')}
                style={{background: "grey", opacity: this.tileIsActive('12') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('12')}>12</div>
+            <div className={'overlayButton'}>12</div>
           </div>
-          <div className={'overlayDiv'}
+          <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('22')}
                style={{background: "green", opacity: this.tileIsActive('22') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} onClick={() => this.hopToNewTileAndToggle('22')}>22</div>
+            <div className={'overlayButton'}>22</div>
           </div>
         </div>
 
