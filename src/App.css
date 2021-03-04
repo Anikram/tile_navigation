@@ -1,6 +1,6 @@
 body {
-    overflow-y: hidden;
-    overflow-x: hidden;
+    /*overflow-y: hidden;*/
+    /*overflow-x: hidden;*/
 }
 
 .visible {
@@ -16,7 +16,7 @@ body {
 }
 
 .god {
-
+    /*display: flex;*/
 }
 
 .overlay {

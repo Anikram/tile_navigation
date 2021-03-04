@@ -2,15 +2,25 @@ import logo from './logo.svg';
 import './App.css';
 import React, {Component} from "react";
 import {ScrollToHOC} from "react-scroll-to";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faArrowUp, faArrowDown, faHamburger, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {withResizeDetector} from 'react-resize-detector';
 
-const arrowUp = <FontAwesomeIcon icon={faArrowUp} />
-const arrowDown = <FontAwesomeIcon icon={faArrowDown} />
-const arrowLeft = <FontAwesomeIcon icon={faArrowLeft} />
-const arrowRight = <FontAwesomeIcon icon={faArrowRight} />
-const hamburger = <FontAwesomeIcon icon={faHamburger} />
-const cross = <FontAwesomeIcon icon={faTimes} />
+
+import {
+  faArrowLeft,
+  faArrowRight,
+  faArrowUp,
+  faArrowDown,
+  faHamburger,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+
+const arrowUp = <FontAwesomeIcon icon={faArrowUp}/>
+const arrowDown = <FontAwesomeIcon icon={faArrowDown}/>
+const arrowLeft = <FontAwesomeIcon icon={faArrowLeft}/>
+const arrowRight = <FontAwesomeIcon icon={faArrowRight}/>
+const hamburger = <FontAwesomeIcon icon={faHamburger}/>
+const cross = <FontAwesomeIcon icon={faTimes}/>
 
 const OPACITY_LEVEL = 0.2
 
@@ -51,10 +61,10 @@ class MyComponent extends Component {
     })
   }
 
-  hopToNewTileAndToggle(newTileCode){
+  hopToNewTileAndToggle(newTileCode) {
     this.toggleOverlay()
 
-    this.moveToNewTile(newTileCode,false)
+    this.moveToNewTile(newTileCode, false)
   }
 
   moveToNewTile(newTileCode, smooth = true) {
@@ -79,11 +89,34 @@ class MyComponent extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.state.tiles[this.state.currentTile].x + " " + this.state.tiles[this.state.currentTile].y)
+
+    // const {width, height} = this.props
+    // console.log("1rst: " + width + " x " + height)
+
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("update current Tile: "+this.state.tiles[this.state.currentTile].x+ " " + this.state.tiles[this.state.currentTile].y)
+    // // this.setState(state => {return{
+    // //   ...state,
+    // //   width: window.innerWidth, height: window.innerHeight
+    // // }})
+    //
+    // console.log("state width:  " + this.state.display.width + " state height:  " + this.state.display.height)
+    // debugger
+    // const {width,height } = this.props
+    // console.log("1rst: " + width + " x " + height)
+    //
+    // if (prevProps.width !== this.props.width && prevProps.height !== this.props.height) {
+    //   this.setState(state => {
+    //     return {
+    //       ...state,
+    //       display: {...state.display, width: width, height: height}
+    //     }
+    //   })
+    //
+    // }
+
+
   }
 
 
@@ -91,7 +124,7 @@ class MyComponent extends Component {
 
 
     return (
-      <>
+      <div className={'god'}>
 
         {/*overlay ===================*/}
         <div className={this.state.overlay ? 'overlay visible' : 'overlay hidden'}
@@ -102,16 +135,18 @@ class MyComponent extends Component {
                left: this.state.tiles[this.state.currentTile].x * this.state.display.width,
              }}>
           {/*<div className={'burger'} onClick={this.toggleOverlay}></div>*/}
-          <div className={'overlayDiv'} onClick={() => {this.hopToNewTileAndToggle('00')} }
+          <div className={'overlayDiv'} onClick={() => {
+            this.hopToNewTileAndToggle('00')
+          }}
                style={{background: "yellow", opacity: this.tileIsActive('00') ? 1 : OPACITY_LEVEL}}>
-            <div className={'overlayButton'} >00</div>
+            <div className={'overlayButton'}>00</div>
           </div>
           <div className={'overlayDiv'} onClick={() => this.hopToNewTileAndToggle('10')}
                style={{background: "orange", opacity: this.tileIsActive('10') ? 1 : OPACITY_LEVEL}}>
             <div className={'overlayButton'}>10</div>
           </div>
           <div className={'overlayDiv'}
-               // onClick={() => this.hopToNewTileAndToggle('20')}
+            // onClick={() => this.hopToNewTileAndToggle('20')}
                style={{background: "lightgrey", opacity: this.tileIsActive('20') ? 1 : OPACITY_LEVEL}}>
             <div className={'overlayButton'}>20</div>
           </div>
@@ -143,114 +178,112 @@ class MyComponent extends Component {
           </div>
         </div>
 
-        <div className={'god'}>
 
-          {/*main ===================*/}
-          <div className={!this.state.overlay ? 'main visible' : 'main hidden'}
-               style={{width: this.state.display.width * 3, height: this.state.display.height * 3}}>
-            <div className={'sect'} style={{background: "yellow"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowDown}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('10')}>{arrowRight}</button>
-              </div>
+        {/*main ===================*/}
+        <div className={!this.state.overlay ? 'main visible' : 'main hidden'}
+             style={{width: this.state.display.width * 3, height: this.state.display.height * 3}}>
+          <div className={'sect'} style={{background: "yellow"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
             </div>
-            <div className={'sect'} style={{background: "orange"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus! </p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('00')}>{arrowLeft}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowDown}</button>
-              </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowDown}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('10')}>{arrowRight}</button>
             </div>
-            <div className={'sect'} style={{background: "lightgrey"}}></div>
+          </div>
+          <div className={'sect'} style={{background: "orange"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus! </p>
+            </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('00')}>{arrowLeft}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowDown}</button>
+            </div>
+          </div>
+          <div className={'sect'} style={{background: "lightgrey"}}></div>
 
 
-            <div className={'sect'} style={{background: "crimson"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('00')}>{arrowUp}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('02')}>{arrowDown}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowRight}</button>
-              </div>
+          <div className={'sect'} style={{background: "crimson"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
             </div>
-            <div className={'sect'} style={{background: "lightblue"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowLeft}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('10')}>{arrowUp}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowDown}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('21')}>{arrowRight}</button>
-              </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('00')}>{arrowUp}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('02')}>{arrowDown}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowRight}</button>
             </div>
-            <div className={'sect'} style={{background: "purple"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowLeft}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('22')}>{arrowDown}</button>
-              </div>
+          </div>
+          <div className={'sect'} style={{background: "lightblue"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
             </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowLeft}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('10')}>{arrowUp}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowDown}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('21')}>{arrowRight}</button>
+            </div>
+          </div>
+          <div className={'sect'} style={{background: "purple"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
+            </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowLeft}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('22')}>{arrowDown}</button>
+            </div>
+          </div>
 
-            <div className={'sect'} style={{background: "brown"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowUp}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowRight}</button>
-              </div>
+          <div className={'sect'} style={{background: "brown"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
             </div>
-            <div className={'sect'} style={{background: "grey"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('02')}>{arrowLeft}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowUp}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('22')}>{arrowRight}</button>
-              </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('01')}>{arrowUp}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowRight}</button>
             </div>
-            <div className={'sect'} style={{background: "green"}}>
-              <div className="contentContainer">
-                <h1>At aut, debitis dolor dolores eos fuga</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
-                  laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
-                  rem saepe ullam voluptatibus!</p>
-              </div>
-              <div className="actions">
-                <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowLeft}</button>
-                <button className={'action-button'} onClick={() => this.moveToNewTile('21')}>{arrowUp}</button>
-              </div>
+          </div>
+          <div className={'sect'} style={{background: "grey"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
+            </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('02')}>{arrowLeft}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('11')}>{arrowUp}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('22')}>{arrowRight}</button>
+            </div>
+          </div>
+          <div className={'sect'} style={{background: "green"}}>
+            <div className="contentContainer">
+              <h1>At aut, debitis dolor dolores eos fuga</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut, debitis dolor dolores eos fuga
+                laboriosam molestiae molestias necessitatibus officia officiis omnis perferendis quam quos reiciendis
+                rem saepe ullam voluptatibus!</p>
+            </div>
+            <div className="actions">
+              <button className={'action-button'} onClick={() => this.moveToNewTile('12')}>{arrowLeft}</button>
+              <button className={'action-button'} onClick={() => this.moveToNewTile('21')}>{arrowUp}</button>
             </div>
           </div>
         </div>
@@ -261,12 +294,16 @@ class MyComponent extends Component {
                // height: this.state.display.height * 3,
                top: this.state.tiles[this.state.currentTile].y * this.state.display.height + 20,
                left: this.state.tiles[this.state.currentTile].x * this.state.display.width + 20,
-             }}>{ this.state.overlay ? cross : hamburger}
+             }}>{this.state.overlay ? cross : hamburger}
         </div>
-      </>
+      </div>
     );
   }
 }
 
+const withResizeDetectorComponent = withResizeDetector(MyComponent)
 
-export default ScrollToHOC(MyComponent)
+const withResizeScrollComponent = ScrollToHOC(withResizeDetectorComponent)
+
+export default withResizeScrollComponent;
+
