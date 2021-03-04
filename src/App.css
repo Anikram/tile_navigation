@@ -1,6 +1,6 @@
 body {
-    /*overflow-y: hidden;*/
-    /*overflow-x: hidden;*/
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .visible {
@@ -76,6 +76,86 @@ body {
 .contentContainer p {
     font-size: 2rem;
 }
+/*and (orientation: landscape)*/
+
+@media screen and (max-height: 950px)
+{
+    .contentContainer {
+        padding: 5rem 5rem 5rem 5rem;
+    }
+
+    .contentContainer h1 {
+        font-size: 2rem;
+    }
+
+    .contentContainer p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .contentContainer {
+        padding: 5rem 5rem 5rem 5rem;
+    }
+
+    .contentContainer h1 {
+        font-size: 2rem;
+    }
+
+    .contentContainer p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .actions {
+        width: 75%;
+        margin-left: auto;
+    }
+    .contentContainer {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    .contentContainer h1 {
+        font-size: 2rem;
+    }
+
+    .contentContainer p {
+        font-size: 1rem;
+    }
+    .action-button {
+        font-size: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+}
+
+@media screen and (max-height: 600px)  {
+
+    .actions {
+        width: 75%;
+        margin-left: auto;
+    }
+
+    .action-button {
+        font-size: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .contentContainer {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    .contentContainer h1 {
+        font-size: 2rem;
+    }
+
+    .contentContainer p {
+        font-size: 1rem;
+    }
+}
 
 .actions {
     float: right;
@@ -121,7 +201,7 @@ body {
     min-height: 5rem;
     max-height: 5rem;
     background-color: black;
-    /*transition: 0.5s;*/
+    transition: 0.5s;
     border-radius: 1rem;
     text-align: center;
     line-height: 5rem;
