@@ -15,5 +15,5 @@ to launch server on port 3000
 
 # demo
 
-[](demo.gif)
+![](demo.gif)
 
